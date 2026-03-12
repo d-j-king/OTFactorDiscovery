@@ -146,3 +146,11 @@ This code was written for learning and exploration. It is not a production libra
 ## Context
 
 AM-SURE (Applied Mathematics Summer Undergraduate Research Experience) is a research program at the Courant Institute of Mathematical Sciences at NYU. This work was completed in summer 2023 under the supervision of Esteban Tabak.
+
+---
+
+## Acknowledgments
+
+Thanks to **Andrew Lipnick**, **Nina Mortensen**, and **Ryan Du** for their support and contributions during the program, and to **Kai M. Hung** for the variability-reduction work this repo builds on.
+
+Code cleanup and improvements assisted by [Claude](https://claude.ai).
