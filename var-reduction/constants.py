@@ -1,9 +1,15 @@
-DATA_PATH = "/Users/kaihung/optimalEnsemble/OTFactorDiscovery/var-reduction/data"
-OUTPUT_PATH = "/Users/kaihung/optimalEnsemble/OTFactorDiscovery/var-reduction/outputs"
-AMR_UTI_PATH = "/Users/kaihung/optimalEnsemble/OTFactorDiscovery/var-reduction/data/amr-uti-antimicrobial-resistance-in-urinary-tract-infections-1.0.0"
+from pathlib import Path
+
+# Paths are resolved relative to this file so the repo works out of the box
+# regardless of where it is cloned.
+_ROOT = Path(__file__).parent
+
+DATA_PATH    = str(_ROOT / "data")
+OUTPUT_PATH  = str(_ROOT / "outputs")
+AMR_UTI_PATH = str(_ROOT / "data" / "amr-uti-antimicrobial-resistance-in-urinary-tract-infections-1.0.0")
 
 hyperparams = {
-    "seed": 125, 
+    "seed": 125,
     "sigma_y": 1,
     "sigma_z": 1,
     "lr": 0.005,
