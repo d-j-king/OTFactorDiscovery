@@ -153,4 +153,6 @@ AM-SURE (Applied Mathematics Summer Undergraduate Research Experience) is a rese
 
 Thanks to **Andrew Lipnick**, **Nina Mortensen**, and **Ryan Du** for their support and contributions during the program, and to **Kai M. Hung** for the variability-reduction work this repo builds on.
 
+AM-SURE 2023 was organized by **Olivia Pomerenk**, **Fortino Garcia**, and **Ryan Du**. The program itself was built and sustained over many years through the tireless efforts of Professor **Aleksandar Donev** — his work securing support and running AM-SURE made experiences like this one possible. He is deeply missed.
+
 Code cleanup and improvements assisted by [Claude](https://claude.ai).
