@@ -1,16 +1,16 @@
-# Generalized K-Means (`daniel/Clustering/`)
+# gen-centers
 
-**Author:** Daniel Wang | AM-SURE 2023, NYU Courant Institute
+Generalized K-Means clustering with configurable cost metrics. Research code from the **AM-SURE 2023** program at NYU's Courant Institute of Mathematical Sciences, advised by **Esteban Tabak**.
 
-Standard K-Means is implicitly tied to squared-Euclidean distance: the within-cluster minimizer of that cost is the mean. The question motivating this work — *what happens when you swap in a different cost function?* The center that minimizes the new cost is no longer the mean. Depending on the metric it is a coordinate-wise median (L1), a geometric median (L2), or something computed via gradient descent (Lp, euclidean^n).
+Standard K-Means is implicitly tied to squared-Euclidean distance: the within-cluster minimizer of that cost is the mean. Swapping in a different cost function changes what the center update looks like — it becomes a coordinate-wise median (L1), a geometric median (L2), or something requiring gradient descent (Lp, euclidean^n).
 
 The framing comes from optimal transport: in the categorical-factor case, factor discovery reduces to a clustering problem, and OT yields natural generalizations of K-Means through new transport costs and initialization schemes. See the [project report](https://math.nyu.edu/media/math/filer_public/48/72/48728e1e-4bf3-4198-88c4-92ad56ac73cd/am_sure_5.pdf) and [slides](https://math.nyu.edu/media/math/filer_public/19/94/19947867-f928-4bdd-b2ec-4a97cd1f566a/final_presentation_clustering.pdf).
 
 ---
 
-## `KGenCenters`
+## Overview
 
-A scikit-learn-compatible clustering class implementing the generalized K-Means framework. Inherits from `BaseEstimator` and `ClusterMixin` — plugs directly into sklearn pipelines and grid search.
+`KGenCenters` is a scikit-learn-compatible clustering class implementing the generalized K-Means framework. It inherits from `BaseEstimator` and `ClusterMixin`, so it plugs directly into sklearn pipelines and grid search.
 
 **Supported cost metrics:**
 
@@ -67,20 +67,12 @@ KGenCenters.elbow_plot(X, cost_metric='squared_euclidean', k_range=range(1, 10))
 model.plot_convergence()
 ```
 
----
-
-## Notebooks
-
-| Notebook | Description |
-|---|---|
-| `demo_for_new_users.ipynb` | Full walkthrough — start here |
-| `initialization_study.ipynb` | Comparison of initialization strategies |
-| `outliers_study.ipynb` | Outlier sensitivity across cost metrics |
-| `real_datasets_study.ipynb` | Experiments on seeds, glass, E. coli, Parkinson's speech features |
-| `wrong_clustering_study.ipynb` | Cases where standard K-Means fails and alternatives help |
+See `demo_for_new_users.ipynb` for a full walkthrough, and the other notebooks for initialization comparisons, outlier sensitivity studies, and experiments on real datasets (seeds, glass, E. coli, Parkinson's speech features).
 
 ---
 
-## Notes
+## Notes on Scope
 
-This code was written for learning and exploration — not a production library. Center updates for `Lp` and `euclidean^n` metrics use backtracking line search (Armijo condition) with an auto-scaled step size: reliable, but not tuned for speed. The code is intentionally transparent and customizable over fast.
+This code was written for learning and exploration. It is not a production library.
+
+`KGenCenters` follows the scikit-learn interface and is reasonably well-tested on real datasets (seeds, glass, E. coli, Parkinson's speech features). Center updates for `Lp` and `euclidean^n` metrics use backtracking line search (Armijo condition) with an auto-scaled step size — reliable, but not tuned for speed. The code is intentionally transparent and customizable rather than optimized for speed.
